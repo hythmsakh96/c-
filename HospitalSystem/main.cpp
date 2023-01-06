@@ -47,8 +47,12 @@ int main(void)
                 }
                 // if 5 patients exist apologise
                 if(counter[spec]>=5)
-                return 0;
-
+                {
+                std::cout<<"unfortunately the reservation is full\n";
+                getchar();
+                getchar();
+                continue;
+                }
                 // if the user is regular or urgent
                 switch(status)
                 {
@@ -69,10 +73,35 @@ int main(void)
             break;
         
         case 2:
-            
+            for(int i=0;i<20;i++)
+            {
+                if(counter[i]==0)
+                {
+                    continue;
+                }
+                else{
+                    std::cout<<"there are "<<counter[i]<<" reservations in specialization number "<<i<<std::endl;
+                    for(int j=0;j<counter[i];j++)
+                    {
+                        std::cout<<reservation[i][j]<<std::endl;
+                    }
+                }
+            }
+            getchar();
+            getchar();
 
         break;
        case 3:
+           std::cout<<"Enter your Specialization\n";
+           std::cin>>spec;
+           std::cout<<"your 1st patient is "<<reservation[spec][0]<<std::endl;
+           getchar();
+           getchar();
+           for(int i=0;i<counter[spec]-1;i++)
+           {
+            reservation[spec][i]=reservation[spec][i+1];
+           }
+           counter[spec]--;
 
         break;
        case 4:
